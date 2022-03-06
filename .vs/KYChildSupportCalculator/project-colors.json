@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "907b816b-c58c-4093-a5f4-9eece039ddca": {
+      "ProjectGuid": "907b816b-c58c-4093-a5f4-9eece039ddca",
+      "DisplayName": "KYChildSupportCalculator",
+      "ColorIndex": 0
+    },
+    "75184a3a-c6ee-4c06-9a42-080ea4ad6cac": {
+      "ProjectGuid": "75184a3a-c6ee-4c06-9a42-080ea4ad6cac",
+      "DisplayName": "UnitTests",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

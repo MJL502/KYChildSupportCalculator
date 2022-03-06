@@ -87,17 +87,11 @@ namespace KYChildSupportCalculator
             Console.WriteLine("What is your last name?");
             KYChildSupportCalculator.parentOne.lastName = Console.ReadLine();
 
-            //declare parentOne fullName
-            KYChildSupportCalculator.parentOne.fullName = KYChildSupportCalculator.parentOne.firstName + " " + KYChildSupportCalculator.parentOne.lastName;
-
             Console.WriteLine("\nWhat is the other Parents first name?");
             KYChildSupportCalculator.parentTwo.firstName = Console.ReadLine();
 
             Console.WriteLine("What is the other Parents last name?");
             KYChildSupportCalculator.parentTwo.lastName = Console.ReadLine();
-
-            //declare parentTwo fullName
-            KYChildSupportCalculator.parentTwo.fullName = KYChildSupportCalculator.parentTwo.firstName + " " + KYChildSupportCalculator.parentTwo.lastName;
 
             KYChildSupportCalculator.generalInfo.numberOfChildren = Validation.Prompt4Integer($"\nHow many children do you have with {KYChildSupportCalculator.parentTwo.firstName}?", "You did not enter a valid selection.  Please type a number (not a word) and press enter.\n");
 
@@ -216,7 +210,7 @@ namespace KYChildSupportCalculator
         {
             Header();
             Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.fullName} makes {KYChildSupportCalculator.parentOne.monthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentOne.adjustedMonthlyGross}.");
-            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.fullName} makes {KYChildSupportCalculator.parentTwo.monthlyIncome} per month.");
+            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.fullName} makes {KYChildSupportCalculator.parentTwo.monthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentTwo.adjustedMonthlyGross}.");
             Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.numberOfChildren}");
             ScheduleHeader();
         }

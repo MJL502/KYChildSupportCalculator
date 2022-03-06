@@ -12,7 +12,14 @@ namespace KYChildSupportCalculator
     {
         public string firstName;
         public string lastName;
-        public string fullName;
+        public string fullName
+        {
+            get
+            {
+                return firstName + " " + lastName;
+            }
+        }
+
         public decimal monthlyIncome;
         public decimal maintPaid;
         public decimal CSPaid;
@@ -21,43 +28,10 @@ namespace KYChildSupportCalculator
         public bool isPrimaryResidence;
         public decimal adjustedMonthlyGross;
         public decimal contribution;
-        public decimal totalSupportObligation;
         public decimal individualSupportObligation;
-    }
 
-    public class GeneralInfo
-    {
-        public int numberOfChildren;
-        public bool equalSchedule;
-        public string primaryResidence;
-        public decimal combinedIncome;
-        public string payorSwitch;
-        public string whoIsPayor;
-    }
-
-    public class Results
-    {
-        public int incomeForTable;
-        public string baseSupportText;
-        public int baseSupport;
-        public decimal totalChildCare;
-        public decimal totalHealthInsurance;
-        public decimal totalSupport;
-        public decimal finalChildSupport;    
-    }
-
-    public class Calculations
-    {
-        public static void Definitions()
+        public static void ParentInitialCalculations()
         {
-            //full names
-
-            KYChildSupportCalculator.parentOne.fullName = KYChildSupportCalculator.parentOne.firstName + " " + KYChildSupportCalculator.parentOne.lastName;
-
-            KYChildSupportCalculator.parentOne.fullName = KYChildSupportCalculator.parentOne.firstName + " " + KYChildSupportCalculator.parentOne.lastName;
-
-            //adjusted monthly gross incomes - NOT WORKING
-
             KYChildSupportCalculator.parentOne.adjustedMonthlyGross =
                 KYChildSupportCalculator.parentOne.monthlyIncome -
                 KYChildSupportCalculator.parentOne.maintPaid -
@@ -69,22 +43,80 @@ namespace KYChildSupportCalculator
                 KYChildSupportCalculator.parentTwo.maintPaid -
                 KYChildSupportCalculator.parentTwo.CSPaid +
                 KYChildSupportCalculator.parentOne.maintPaid;
+        }
 
-            //calculations
-
-            KYChildSupportCalculator.generalInfo.combinedIncome =
-                KYChildSupportCalculator.parentOne.adjustedMonthlyGross +
-                KYChildSupportCalculator.parentTwo.adjustedMonthlyGross;
-
-            KYChildSupportCalculator.results.incomeForTable = (int)(Math.Floor(KYChildSupportCalculator.generalInfo.combinedIncome / 100) * 100);
-
-            KYChildSupportCalculator.parentOne.contribution =
+        public static void ParentFinalCalculations()
+        {
+            KYChildSupportCalculator.parentOne.contribution = 
+                Math.Round(
                 KYChildSupportCalculator.parentOne.adjustedMonthlyGross /
-                KYChildSupportCalculator.generalInfo.combinedIncome;
+                KYChildSupportCalculator.generalInfo.combinedIncome
+                , 4);
 
             KYChildSupportCalculator.parentTwo.contribution =
+                Math.Round(
                 KYChildSupportCalculator.parentTwo.adjustedMonthlyGross /
-                KYChildSupportCalculator.generalInfo.combinedIncome;
+                KYChildSupportCalculator.generalInfo.combinedIncome
+                , 4);
+
+            KYChildSupportCalculator.parentOne.individualSupportObligation =
+                Math.Round(
+                (KYChildSupportCalculator.results.totalSupport *
+                KYChildSupportCalculator.parentOne.contribution) -
+                KYChildSupportCalculator.parentOne.healthInsPaid -
+                KYChildSupportCalculator.parentOne.childCarePaid
+                , 2);
+
+            KYChildSupportCalculator.parentTwo.individualSupportObligation =
+                Math.Round(
+                (KYChildSupportCalculator.results.totalSupport *
+                KYChildSupportCalculator.parentTwo.contribution) -
+                KYChildSupportCalculator.parentTwo.healthInsPaid -
+                KYChildSupportCalculator.parentTwo.childCarePaid
+                , 2);
+        }
+    }
+
+    public class GeneralInfo
+    {
+        public int numberOfChildren;
+        public int childrenForTable;
+        public bool equalSchedule;
+        public string primaryResidence;
+        public decimal combinedIncome;
+        public string payorSwitch;
+        public string whoIsPayor;
+
+       public static void GeneralInfoCalculations()
+       {
+           KYChildSupportCalculator.generalInfo.combinedIncome = KYChildSupportCalculator.parentOne.adjustedMonthlyGross +
+              KYChildSupportCalculator.parentTwo.adjustedMonthlyGross;
+
+            if (KYChildSupportCalculator.generalInfo.numberOfChildren > 6)
+            {
+                KYChildSupportCalculator.generalInfo.childrenForTable = 6;
+            }
+            else
+            {
+                KYChildSupportCalculator.generalInfo.childrenForTable = KYChildSupportCalculator.generalInfo.numberOfChildren;
+            }
+
+       }
+    }
+
+    public class Results
+    {
+        public int incomeForTable;
+        public string baseSupportText;
+        public int baseSupport;
+        public decimal totalChildCare;
+        public decimal totalHealthInsurance;
+        public decimal totalSupport;
+        public decimal finalChildSupport;
+
+        public static void ResultsInitialCalculations()
+        {
+            KYChildSupportCalculator.results.incomeForTable = (int)(Math.Floor(KYChildSupportCalculator.generalInfo.combinedIncome / 100) * 100);
 
             KYChildSupportCalculator.results.totalChildCare =
                 KYChildSupportCalculator.parentOne.childCarePaid +
@@ -93,23 +125,14 @@ namespace KYChildSupportCalculator
             KYChildSupportCalculator.results.totalHealthInsurance =
                 KYChildSupportCalculator.parentOne.healthInsPaid +
                 KYChildSupportCalculator.parentTwo.healthInsPaid;
+        }
 
+        public static void ResultsFinalCalculations()
+        {
             KYChildSupportCalculator.results.totalSupport =
                 KYChildSupportCalculator.results.baseSupport +
                 KYChildSupportCalculator.results.totalChildCare +
                 KYChildSupportCalculator.results.totalHealthInsurance;
-
-            KYChildSupportCalculator.parentOne.individualSupportObligation =
-                (KYChildSupportCalculator.results.totalSupport *
-                KYChildSupportCalculator.parentOne.contribution) -
-                KYChildSupportCalculator.parentOne.healthInsPaid -
-                KYChildSupportCalculator.parentOne.childCarePaid;
-
-            KYChildSupportCalculator.parentTwo.individualSupportObligation =
-                (KYChildSupportCalculator.results.totalSupport *
-                KYChildSupportCalculator.parentTwo.contribution) -
-                KYChildSupportCalculator.parentTwo.healthInsPaid -
-                KYChildSupportCalculator.parentTwo.childCarePaid;
         }
 
         public static void WorksheetSelector()
@@ -247,7 +270,7 @@ namespace KYChildSupportCalculator
             }
 
             int lookUpRow = KYChildSupportCalculator.results.incomeForTable / 100;
-            int lookUpColumn = KYChildSupportCalculator.generalInfo.numberOfChildren;
+            int lookUpColumn = KYChildSupportCalculator.generalInfo.childrenForTable;
             KYChildSupportCalculator.results.baseSupportText = fullTable[lookUpRow, lookUpColumn];
 
             //add validation;

@@ -33,6 +33,15 @@ namespace KYChildSupportCalculator
 
             MenuClasses.StepThreeQuestions();
 
+            Parent.ParentInitialCalculations();
+            GeneralInfo.GeneralInfoCalculations();
+            Results.ResultsInitialCalculations();
+            ChildSupportTable.ReadTableFromFile();
+            Results.ResultsFinalCalculations();
+            Parent.ParentFinalCalculations();
+            Results.WorksheetSelector();
+
+
             MenuClasses.FinalResults(); 
 
             //tests below should all work - but AGI (adjusted gross income) is not working
@@ -63,6 +72,15 @@ namespace KYChildSupportCalculator
 
             Console.WriteLine($"the payor switch is --{KYChildSupportCalculator.generalInfo.payorSwitch}--");
             Console.WriteLine($"who is payor --{KYChildSupportCalculator.generalInfo.whoIsPayor}--");
+
+            Console.WriteLine($"kids --{KYChildSupportCalculator.generalInfo.numberOfChildren}--");
+            Console.WriteLine($"kids for table --{KYChildSupportCalculator.generalInfo.childrenForTable}--");
+            Console.WriteLine($"base support --{KYChildSupportCalculator.results.baseSupportText}--");
+            Console.WriteLine($"base support dec --{KYChildSupportCalculator.results.baseSupport}--");
+            Console.WriteLine($"total support --{KYChildSupportCalculator.results.totalSupport}-- ");
+
+            Console.WriteLine($"p1 iso is --{KYChildSupportCalculator.parentOne.individualSupportObligation}--");
+            Console.WriteLine($"p2 iso is --{KYChildSupportCalculator.parentTwo.individualSupportObligation}--");
             Console.WriteLine($"final support amount --{KYChildSupportCalculator.results.finalChildSupport}--");
             Console.ReadLine();
 
