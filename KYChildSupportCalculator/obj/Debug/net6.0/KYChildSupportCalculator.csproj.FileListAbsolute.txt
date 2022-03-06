@@ -1,0 +1,15 @@
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\KYChildSupportCalculator.exe
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\KYChildSupportCalculator.deps.json
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\KYChildSupportCalculator.runtimeconfig.json
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\KYChildSupportCalculator.dll
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\ref\KYChildSupportCalculator.dll
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\bin\Debug\net6.0\KYChildSupportCalculator.pdb
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.csproj.AssemblyReference.cache
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.AssemblyInfoInputs.cache
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.AssemblyInfo.cs
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.csproj.CoreCompileInputs.cache
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.dll
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\ref\KYChildSupportCalculator.dll
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.pdb
+C:\Users\mjlaw\source\repos\KYChildSupportCalculator\KYChildSupportCalculator\obj\Debug\net6.0\KYChildSupportCalculator.genruntimeconfig.cache
