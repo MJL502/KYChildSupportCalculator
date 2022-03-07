@@ -45,21 +45,72 @@ namespace KYChildSupportCalculator
                 KYChildSupportCalculator.parentOne.maintPaid;
         }
 
-        public static void ParentFinalCalculations()
+        public static void ParentSecondCalculations()
         {
-            KYChildSupportCalculator.parentOne.contribution = 
+            if (KYChildSupportCalculator.parentOne.adjustedMonthlyGross <= 0 && KYChildSupportCalculator.parentTwo.adjustedMonthlyGross > 0)
+            {
+                KYChildSupportCalculator.parentOne.adjustedMonthlyGross = 0;
+                KYChildSupportCalculator.parentOne.contribution = 0;
+                KYChildSupportCalculator.parentTwo.contribution = 1;
+            }
+            else if (KYChildSupportCalculator.parentTwo.adjustedMonthlyGross <= 0 && KYChildSupportCalculator.parentOne.adjustedMonthlyGross > 0)
+            {
+                KYChildSupportCalculator.parentTwo.adjustedMonthlyGross = 0;
+                KYChildSupportCalculator.parentTwo.contribution = 0;
+                KYChildSupportCalculator.parentOne.contribution = 1;
+            }
+            else if (KYChildSupportCalculator.parentTwo.adjustedMonthlyGross <= 0 && KYChildSupportCalculator.parentOne.adjustedMonthlyGross <= 0)
+            {
+                KYChildSupportCalculator.parentOne.adjustedMonthlyGross = 0;
+                KYChildSupportCalculator.parentOne.contribution = 0;
+                KYChildSupportCalculator.parentOne.contribution = .5m;
+                KYChildSupportCalculator.parentTwo.contribution = .5m;
+            }
+            else
+            {
+                KYChildSupportCalculator.parentOne.contribution =
                 Math.Round(
                 KYChildSupportCalculator.parentOne.adjustedMonthlyGross /
                 KYChildSupportCalculator.generalInfo.combinedIncome
                 , 4);
 
-            KYChildSupportCalculator.parentTwo.contribution =
+                KYChildSupportCalculator.parentTwo.contribution =
                 Math.Round(
                 KYChildSupportCalculator.parentTwo.adjustedMonthlyGross /
                 KYChildSupportCalculator.generalInfo.combinedIncome
                 , 4);
+            }
+                
+        }
 
-            KYChildSupportCalculator.parentOne.individualSupportObligation =
+        public static void ParentFinalCalculations()
+        {
+            
+            if (KYChildSupportCalculator.generalInfo.equalSchedule == true)
+            {
+                KYChildSupportCalculator.parentOne.individualSupportObligation =
+                Math.Round(
+                ((KYChildSupportCalculator.results.totalSupport -
+                KYChildSupportCalculator.parentTwo.healthInsPaid -
+                KYChildSupportCalculator.parentTwo.childCarePaid) *
+                KYChildSupportCalculator.parentOne.contribution) -
+                KYChildSupportCalculator.parentOne.healthInsPaid -
+                KYChildSupportCalculator.parentOne.childCarePaid
+               , 2);
+
+                KYChildSupportCalculator.parentTwo.individualSupportObligation =
+                Math.Round(
+                ((KYChildSupportCalculator.results.totalSupport -
+                KYChildSupportCalculator.parentOne.healthInsPaid -
+                KYChildSupportCalculator.parentOne.childCarePaid) *
+                KYChildSupportCalculator.parentTwo.contribution) -
+                KYChildSupportCalculator.parentTwo.healthInsPaid -
+                KYChildSupportCalculator.parentTwo.childCarePaid
+               , 2);
+            }
+            else
+            {
+                KYChildSupportCalculator.parentOne.individualSupportObligation =
                 Math.Round(
                 (KYChildSupportCalculator.results.totalSupport *
                 KYChildSupportCalculator.parentOne.contribution) -
@@ -67,13 +118,14 @@ namespace KYChildSupportCalculator
                 KYChildSupportCalculator.parentOne.childCarePaid
                 , 2);
 
-            KYChildSupportCalculator.parentTwo.individualSupportObligation =
+                KYChildSupportCalculator.parentTwo.individualSupportObligation =
                 Math.Round(
                 (KYChildSupportCalculator.results.totalSupport *
                 KYChildSupportCalculator.parentTwo.contribution) -
                 KYChildSupportCalculator.parentTwo.healthInsPaid -
                 KYChildSupportCalculator.parentTwo.childCarePaid
                 , 2);
+            }
         }
     }
 
@@ -82,7 +134,7 @@ namespace KYChildSupportCalculator
         public int numberOfChildren;
         public int childrenForTable;
         public bool equalSchedule;
-        public string primaryResidence;
+        public int primaryResidence;
         public decimal combinedIncome;
         public string payorSwitch;
         public string whoIsPayor;
@@ -106,8 +158,7 @@ namespace KYChildSupportCalculator
 
     public class Results
     {
-        public int incomeForTable;
-        public string baseSupportText;
+        public int incomeForTable; 
         public int baseSupport;
         public decimal totalChildCare;
         public decimal totalHealthInsurance;
@@ -116,8 +167,7 @@ namespace KYChildSupportCalculator
 
         public static void ResultsInitialCalculations()
         {
-            KYChildSupportCalculator.results.incomeForTable = (int)(Math.Floor(KYChildSupportCalculator.generalInfo.combinedIncome / 100) * 100);
-
+           
             KYChildSupportCalculator.results.totalChildCare =
                 KYChildSupportCalculator.parentOne.childCarePaid +
                 KYChildSupportCalculator.parentTwo.childCarePaid;
@@ -145,11 +195,11 @@ namespace KYChildSupportCalculator
             }
             else if (KYChildSupportCalculator.generalInfo.equalSchedule == false && KYChildSupportCalculator.parentOne.isPrimaryResidence == true)
             {
-                KYChildSupportCalculator.generalInfo.payorSwitch = "1";
+                KYChildSupportCalculator.generalInfo.payorSwitch = "2";
             }
             else if (KYChildSupportCalculator.generalInfo.equalSchedule == false && KYChildSupportCalculator.parentTwo.isPrimaryResidence == true)
             {
-                KYChildSupportCalculator.generalInfo.payorSwitch = "2";
+                KYChildSupportCalculator.generalInfo.payorSwitch = "1";
             }
 
             //switch to determine which formula to use and which parent pays
@@ -181,11 +231,13 @@ namespace KYChildSupportCalculator
                 case "1":
                     KYChildSupportCalculator.results.finalChildSupport =
                         KYChildSupportCalculator.parentOne.individualSupportObligation;
+                    KYChildSupportCalculator.generalInfo.whoIsPayor = "parent1";
                     break;
 
                 case "2":
                     KYChildSupportCalculator.results.finalChildSupport =
                         KYChildSupportCalculator.parentTwo.individualSupportObligation;
+                    KYChildSupportCalculator.generalInfo.whoIsPayor = "parent2";
                     break;
             }
         }
@@ -269,13 +321,25 @@ namespace KYChildSupportCalculator
                 }
             }
 
+
+            int maxIncomeOnTable = int.Parse(fullTable[(numRows - 1), 0]);
+
+            if
+            (KYChildSupportCalculator.generalInfo.combinedIncome > maxIncomeOnTable)
+            {
+                KYChildSupportCalculator.results.incomeForTable = maxIncomeOnTable;
+            }
+            else
+            {
+                KYChildSupportCalculator.results.incomeForTable = (int)(Math.Floor(KYChildSupportCalculator.generalInfo.combinedIncome / 100) * 100);
+            }
+
             int lookUpRow = KYChildSupportCalculator.results.incomeForTable / 100;
             int lookUpColumn = KYChildSupportCalculator.generalInfo.childrenForTable;
-            KYChildSupportCalculator.results.baseSupportText = fullTable[lookUpRow, lookUpColumn];
 
             //add validation;
-
-            KYChildSupportCalculator.results.baseSupport = int.Parse(KYChildSupportCalculator.results.baseSupportText);
+            
+            KYChildSupportCalculator.results.baseSupport = int.Parse(fullTable[lookUpRow, lookUpColumn]);
         }
     }
 }

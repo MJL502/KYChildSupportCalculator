@@ -18,12 +18,9 @@ This allows the file to be easily replaced with an updated version if/when the s
 To ensure this calculator runs correctly make sure the .csv file is in the main project directory.
 
 This project is run from a .NET console application, written in c#.
-Ideally there would be a more friendly user interface and likely something cross platform.
+Ideally there would be a more user friendly interface and likely something cross platform.
 Both are likely coming in a future version.
 This project had specific parameters that necessitated the first version being built as a .NET console application.
-
-The calculator will allow the user to run through the program as many times as they would like before exiting.
-The calculator will validate all entries to ensure they are the correct type and format.
 
 
 Project Requirements
@@ -35,10 +32,10 @@ Project Requirements
 	o	Any special instructions required for the reviewer to run your project. - COMPLETE - SEE ABOVE
 
 •	You must create at least one class, then create at least one object of that class and populate it with data. 
-	You must use or display the data in your application. - COMPLETE - The Parent class is one of several examples.
+	You must use or display the data in your application. - COMPLETE - One example is the Parent class which has objects ParentOne and ParentTwo, both populated with data.
 
 •	Create and call at least 3 functions or methods, at least one of which must return a value that is used in your application.
-	- COMPLETE - SEE ______________, ______, __________, ___________, or ________________.
+	- COMPLETE -
 
 •	Choose at least 3 items on the Features List below and implement them in your project
 
@@ -53,7 +50,7 @@ FEATURE LIST:
 
 •	Implement a log that records errors, invalid inputs, or other important events and writes them to a text file - MAY BE ADDED - 
 
-•	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application - COMPLETE - SEE ________
+•	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application - COMPLETE -
 
 •	Implement a regular expression (regex) to ensure a field either a phone number or an email address is always stored and displayed in the same format
 	 - IN PROGRESS - 

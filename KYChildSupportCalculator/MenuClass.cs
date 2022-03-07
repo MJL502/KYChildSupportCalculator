@@ -96,28 +96,26 @@ namespace KYChildSupportCalculator
             KYChildSupportCalculator.generalInfo.numberOfChildren = Validation.Prompt4Integer($"\nHow many children do you have with {KYChildSupportCalculator.parentTwo.firstName}?", "You did not enter a valid selection.  Please type a number (not a word) and press enter.\n");
 
             KYChildSupportCalculator.generalInfo.equalSchedule = Validation.Prompt4YesNo($"\nDo you and { KYChildSupportCalculator.parentTwo.firstName} {KYChildSupportCalculator.parentTwo.lastName} have an equal parenting schedule, yes ('Y') or no ('N')?\n");
-
-            //Validation.TryPrompt4YesNo
             
             if (KYChildSupportCalculator.generalInfo.equalSchedule == false)
-            { 
-                Console.WriteLine($"\nWhich parent do the children reside with a majority of the time.\nEnter '{KYChildSupportCalculator.parentOne.firstName}' for you. \nEnter '{KYChildSupportCalculator.parentTwo.firstName}' for the other Parent?");
+            {
+                KYChildSupportCalculator.generalInfo.primaryResidence = Validation.Prompt4Integer
+                    (
+                    "\nWhich parent do the children reside with a majority of the time?\n" +
+                    "Please enter '1' if the children live with you a majority of the time.\n" +
+                    "Please enter '2' if the children reside with the other parent a majority of the time.\n",
+                    "You did not enter a valid selection.\n" +
+                    "Please enter '1' if the children live with you a majority of the time.\n" +
+                    "Please enter '2' if the children reside with the other parent a majority of the time.\n",
+                    2
+                    );
 
-                //add better validation
-
-                KYChildSupportCalculator.generalInfo.primaryResidence = Console.ReadLine();
-
-                while (KYChildSupportCalculator.generalInfo.primaryResidence.ToUpper() != KYChildSupportCalculator.parentOne.firstName.ToUpper() && KYChildSupportCalculator.generalInfo.primaryResidence.ToUpper() != KYChildSupportCalculator.parentTwo.firstName.ToUpper())
-                {
-                    Console.WriteLine($"\nWhich parent do the children reside with a majority of the time.\nEnter '{KYChildSupportCalculator.parentOne.firstName}' for you. \nEnter '{KYChildSupportCalculator.parentTwo.firstName}' for the other Parent?");
-                    KYChildSupportCalculator.generalInfo.primaryResidence = Console.ReadLine();
-                }
-                if (KYChildSupportCalculator.generalInfo.primaryResidence.ToUpper() == KYChildSupportCalculator.parentOne.firstName.ToUpper())
+                if (KYChildSupportCalculator.generalInfo.primaryResidence == 1)
                 {
                     KYChildSupportCalculator.parentOne.isPrimaryResidence = true;
                 }
 
-                if (KYChildSupportCalculator.generalInfo.primaryResidence.ToUpper() == KYChildSupportCalculator.parentTwo.firstName.ToUpper())
+                else if (KYChildSupportCalculator.generalInfo.primaryResidence == 2)
                 {
                     KYChildSupportCalculator.parentTwo.isPrimaryResidence = true;
                 }
@@ -294,6 +292,7 @@ namespace KYChildSupportCalculator
 
             //help codes
         }
+
     }
   
 }

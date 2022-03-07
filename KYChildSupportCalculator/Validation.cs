@@ -23,13 +23,13 @@ namespace KYChildSupportCalculator
             return value;
         }
 
-        public static int Prompt4Integer(string prompt1, string prompt2)
+        public static int Prompt4Integer(string prompt1, string prompt2, int maxValue = int.MaxValue)
         {
             int value;
 
             Console.WriteLine(prompt1);
 
-            while (!int.TryParse(Console.ReadLine(), out value))
+            while (!int.TryParse(Console.ReadLine(), out value) || value > maxValue)
             {
                 Console.Write(prompt2);
             }
