@@ -81,25 +81,27 @@ namespace KYChildSupportCalculator
             MenuClasses.Header();
             Console.WriteLine("STEP 1 - GENERAL INFORMATION\n\n");
 
+            KYChildSupportCalculator.timeSpent.StartTimer();
+
             Console.WriteLine("What is your first name?");
-            KYChildSupportCalculator.parentOne.firstName = Console.ReadLine();
+            KYChildSupportCalculator.parentOne.FirstName = Console.ReadLine();
 
             Console.WriteLine("What is your last name?");
-            KYChildSupportCalculator.parentOne.lastName = Console.ReadLine();
+            KYChildSupportCalculator.parentOne.LastName = Console.ReadLine();
 
             Console.WriteLine("\nWhat is the other Parents first name?");
-            KYChildSupportCalculator.parentTwo.firstName = Console.ReadLine();
+            KYChildSupportCalculator.parentTwo.FirstName = Console.ReadLine();
 
             Console.WriteLine("What is the other Parents last name?");
-            KYChildSupportCalculator.parentTwo.lastName = Console.ReadLine();
+            KYChildSupportCalculator.parentTwo.LastName = Console.ReadLine();
 
-            KYChildSupportCalculator.generalInfo.numberOfChildren = Validation.Prompt4Integer($"\nHow many children do you have with {KYChildSupportCalculator.parentTwo.firstName}?", "You did not enter a valid selection.  Please type a number (not a word) and press enter.\n");
+            KYChildSupportCalculator.generalInfo.NumberOfChildren = Validation.Prompt4Integer($"\nHow many children do you have with {KYChildSupportCalculator.parentTwo.FirstName}?", "You did not enter a valid selection.  Please type a number (not a word) and press enter.\n");
 
-            KYChildSupportCalculator.generalInfo.equalSchedule = Validation.Prompt4YesNo($"\nDo you and { KYChildSupportCalculator.parentTwo.firstName} {KYChildSupportCalculator.parentTwo.lastName} have an equal parenting schedule, yes ('Y') or no ('N')?\n");
+            KYChildSupportCalculator.generalInfo.EqualSchedule = Validation.Prompt4YesNo($"\nDo you and { KYChildSupportCalculator.parentTwo.FirstName} {KYChildSupportCalculator.parentTwo.LastName} have an equal parenting schedule, enter 'Y' for yes OR 'N' for no?\n");
             
-            if (KYChildSupportCalculator.generalInfo.equalSchedule == false)
+            if (KYChildSupportCalculator.generalInfo.EqualSchedule == false)
             {
-                KYChildSupportCalculator.generalInfo.primaryResidence = Validation.Prompt4Integer
+                KYChildSupportCalculator.generalInfo.PrimaryResidence = Validation.Prompt4Integer
                     (
                     "\nWhich parent do the children reside with a majority of the time?\n" +
                     "Please enter '1' if the children live with you a majority of the time.\n" +
@@ -110,43 +112,43 @@ namespace KYChildSupportCalculator
                     2
                     );
 
-                if (KYChildSupportCalculator.generalInfo.primaryResidence == 1)
+                if (KYChildSupportCalculator.generalInfo.PrimaryResidence == 1)
                 {
-                    KYChildSupportCalculator.parentOne.isPrimaryResidence = true;
+                    KYChildSupportCalculator.parentOne.IsPrimaryResidence = true;
                 }
 
-                else if (KYChildSupportCalculator.generalInfo.primaryResidence == 2)
+                else if (KYChildSupportCalculator.generalInfo.PrimaryResidence == 2)
                 {
-                    KYChildSupportCalculator.parentTwo.isPrimaryResidence = true;
+                    KYChildSupportCalculator.parentTwo.IsPrimaryResidence = true;
                 }
             }  
         }
         public static void StepTwoHeader()
         {
             Header();
-            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.fullName}");
-            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.fullName}");
-            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.numberOfChildren}");
+            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName}");
+            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.FullName}");
+            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.NumberOfChildren}");
             ScheduleHeader();
             Console.WriteLine("STEP 2 - INCOME INFORMATION\n\n");
         }
 
         public static void ScheduleHeader()
         {
-            if (KYChildSupportCalculator.generalInfo.equalSchedule == true)
+            if (KYChildSupportCalculator.generalInfo.EqualSchedule == true)
             {
                 Console.WriteLine($"Parenting Schedule: Equal\n\n");
             }
-            if (KYChildSupportCalculator.generalInfo.equalSchedule == false)
+            if (KYChildSupportCalculator.generalInfo.EqualSchedule == false)
             {
-                if (KYChildSupportCalculator.parentOne.isPrimaryResidence == true)
+                if (KYChildSupportCalculator.parentOne.IsPrimaryResidence == true)
                 {
-                    Console.WriteLine($"Parenting Schedule: Not Equal\nPrimary Residence: {KYChildSupportCalculator.parentOne.firstName}\n\n");
+                    Console.WriteLine($"Parenting Schedule: Not Equal\nPrimary Residence: {KYChildSupportCalculator.parentOne.FirstName}\n\n");
                 }
 
-                if (KYChildSupportCalculator.parentTwo.isPrimaryResidence == true)
+                if (KYChildSupportCalculator.parentTwo.IsPrimaryResidence == true)
                 {
-                    Console.WriteLine($"Parenting Schedule: Not Equal\nPrimary Residence: { KYChildSupportCalculator.parentTwo.firstName}\n\n");
+                    Console.WriteLine($"Parenting Schedule: Not Equal\nPrimary Residence: { KYChildSupportCalculator.parentTwo.FirstName}\n\n");
                 }
             }
         }
@@ -155,17 +157,17 @@ namespace KYChildSupportCalculator
         {
             MenuClasses.StepTwoHeader();
 
-            KYChildSupportCalculator.parentOne.monthlyIncome = Validation.Prompt4Decimal($"What is your gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
+            KYChildSupportCalculator.parentOne.MonthlyIncome = Validation.Prompt4Decimal($"What is your gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
 
-            KYChildSupportCalculator.parentTwo.monthlyIncome = Validation.Prompt4Decimal($"What is {KYChildSupportCalculator.parentTwo.firstName}'s gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
+            KYChildSupportCalculator.parentTwo.MonthlyIncome = Validation.Prompt4Decimal($"What is {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
         }
 
         public static void StepThreeHeader()
         {
             Header();
-            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.fullName} makes {KYChildSupportCalculator.parentOne.monthlyIncome} per month.");
-            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.fullName} makes {KYChildSupportCalculator.parentTwo.monthlyIncome} per month.");
-            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.numberOfChildren}");
+            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName} makes {KYChildSupportCalculator.parentOne.MonthlyIncome} per month.");
+            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.FullName} makes {KYChildSupportCalculator.parentTwo.MonthlyIncome} per month.");
+            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.NumberOfChildren}");
             ScheduleHeader();
             Console.WriteLine("STEP 3 - EXPENSE INFORMATION\n\n");
         }
@@ -178,38 +180,40 @@ namespace KYChildSupportCalculator
 
             string errorMessage = "You did not enter a valid selection. Please type a number (not a word) and press enter. Do not use any dollar signs or commas.  Just enter a number.";
 
-            KYChildSupportCalculator.parentOne.maintPaid = Validation.Prompt4Decimal($"If you pay maintenance to {KYChildSupportCalculator.parentTwo.firstName}, enter the monhtly amount now.  If you do not pay maintenance enter 0.", errorMessage);
+            KYChildSupportCalculator.parentOne.MaintPaid = Validation.Prompt4Decimal($"If you pay maintenance to {KYChildSupportCalculator.parentTwo.FirstName}, enter the monhtly amount now.  If you do not pay maintenance enter 0.", errorMessage);
+            KYChildSupportCalculator.parentTwo.OtherParentMaintPaid = KYChildSupportCalculator.parentOne.MaintPaid;
 
-            KYChildSupportCalculator.parentTwo.maintPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.firstName} pays you maintenance, enter the monhtly amount now.  If {KYChildSupportCalculator.parentTwo.firstName} does not pay maintenance enter 0.", errorMessage);
+            KYChildSupportCalculator.parentTwo.MaintPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.FirstName} pays you maintenance, enter the monhtly amount now.  If {KYChildSupportCalculator.parentTwo.FirstName} does not pay maintenance enter 0.", errorMessage);
+            KYChildSupportCalculator.parentOne.OtherParentMaintPaid = KYChildSupportCalculator.parentTwo.MaintPaid;
             Console.WriteLine();
 
             //Prior born child support payments
 
             KYChildSupportCalculator.parentOne.CSPaid = Validation.Prompt4Decimal($"If you pay child support for PRIOR born children, enter the monhtly amount now.  If you do not pay child support for prior born children enter 0.", errorMessage);
 
-            KYChildSupportCalculator.parentTwo.CSPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.firstName} pays child support for PRIOR born children, enter the monhtly amount now.  If {KYChildSupportCalculator.parentTwo.firstName} does not pay child support for PRIOR born children enter 0.", errorMessage);
+            KYChildSupportCalculator.parentTwo.CSPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.FirstName} pays child support for PRIOR born children, enter the monhtly amount now.  If {KYChildSupportCalculator.parentTwo.FirstName} does not pay child support for PRIOR born children enter 0.", errorMessage);
             Console.WriteLine();
 
             //Child Care Costs
 
-            KYChildSupportCalculator.parentOne.childCarePaid = Validation.Prompt4Decimal($"If you pay for child care, enter the monthly amount.  If you do not pay for child care enter 0.", errorMessage);
+            KYChildSupportCalculator.parentOne.ChildCarePaid = Validation.Prompt4Decimal($"If you pay for child care, enter the monthly amount.  If you do not pay for child care enter 0.", errorMessage);
 
-            KYChildSupportCalculator.parentTwo.childCarePaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.firstName} pays for child care costs, enter the monthly amount.  If {KYChildSupportCalculator.parentTwo.firstName} does not pay for child care enter 0.", errorMessage);
+            KYChildSupportCalculator.parentTwo.ChildCarePaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.FirstName} pays for child care costs, enter the monthly amount.  If {KYChildSupportCalculator.parentTwo.FirstName} does not pay for child care enter 0.", errorMessage);
             Console.WriteLine();
 
             //Health Insurance Costs
 
-            KYChildSupportCalculator.parentOne.healthInsPaid = Validation.Prompt4Decimal($"If you pay for health insurance for your child(ren), enter the monthly amount.  If you do not pay for child care enter 0.", errorMessage);
+            KYChildSupportCalculator.parentOne.HealthInsPaid = Validation.Prompt4Decimal($"If you pay for health insurance for your child(ren), enter the monthly amount.  If you do not pay for child care enter 0.", errorMessage);
 
-            KYChildSupportCalculator.parentTwo.healthInsPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.firstName} pays for health insurance for your child(ren), enter the monthly amount.  If {KYChildSupportCalculator.parentTwo.firstName} does not pay for child care enter 0.", errorMessage);
+            KYChildSupportCalculator.parentTwo.HealthInsPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.FirstName} pays for health insurance for your child(ren), enter the monthly amount.  If {KYChildSupportCalculator.parentTwo.FirstName} does not pay for child care enter 0.", errorMessage);
         }
 
         public static void FinalHeader()
         {
             Header();
-            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.fullName} makes {KYChildSupportCalculator.parentOne.monthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentOne.adjustedMonthlyGross}.");
-            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.fullName} makes {KYChildSupportCalculator.parentTwo.monthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentTwo.adjustedMonthlyGross}.");
-            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.numberOfChildren}");
+            Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName} makes {KYChildSupportCalculator.parentOne.MonthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentOne.AdjustedMonthlyGross}.");
+            Console.WriteLine($"Parent Two: {KYChildSupportCalculator.parentTwo.FullName} makes {KYChildSupportCalculator.parentTwo.MonthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentTwo.AdjustedMonthlyGross}.");
+            Console.WriteLine($"Child(ren): {KYChildSupportCalculator.generalInfo.NumberOfChildren}");
             ScheduleHeader();
         }
 
@@ -218,7 +222,7 @@ namespace KYChildSupportCalculator
             FinalHeader();
             //display final child support results using a switch
 
-            switch (KYChildSupportCalculator.generalInfo.whoIsPayor)
+            switch (KYChildSupportCalculator.generalInfo.WhoIsPayor)
             {
                 case "noPayor":
 
@@ -227,13 +231,15 @@ namespace KYChildSupportCalculator
 
                 case "parent1":
 
-                    Console.WriteLine($"Based on the information entered {KYChildSupportCalculator.parentOne.firstName} should pay {KYChildSupportCalculator.parentTwo.firstName} {KYChildSupportCalculator.results.finalChildSupport} per month.");
+                    Console.WriteLine($"Based on the information entered {KYChildSupportCalculator.parentOne.FirstName} should pay {KYChildSupportCalculator.parentTwo.FirstName} {KYChildSupportCalculator.results.FinalChildSupport} per month.");
                     break;
 
                 case "parent2":
-                    Console.WriteLine($"Based on the information entered {KYChildSupportCalculator.parentTwo.firstName} should pay {KYChildSupportCalculator.parentOne.firstName} {KYChildSupportCalculator.results.finalChildSupport} per month.");
+                    Console.WriteLine($"Based on the information entered {KYChildSupportCalculator.parentTwo.FirstName} should pay {KYChildSupportCalculator.parentOne.FirstName} {KYChildSupportCalculator.results.FinalChildSupport} per month.");
                     break;
             }
+            KYChildSupportCalculator.timeSpent.EndTimer();
+            Console.WriteLine($"\nIt took {KYChildSupportCalculator.timeSpent.CreateTimeSpentString(KYChildSupportCalculator.timeSpent.StartDate, KYChildSupportCalculator.timeSpent.EndDate)} to calculate your child support.");
             Console.ReadLine();
         }
 
@@ -283,14 +289,7 @@ namespace KYChildSupportCalculator
 
         public static void exitSurvey()
         {
-            Console.WriteLine("Would you like to run another child support calculation (Yes/No)?");
-            //exit code
-
-            //time code
-
             //save code
-
-            //help codes
         }
 
     }
