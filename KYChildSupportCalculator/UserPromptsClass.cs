@@ -10,11 +10,11 @@ using KYChildSupportCalculator;
 namespace KYChildSupportCalculator
 {
 
-    public class MenuClasses
+    public class UserPromptsClass
     {
         public static string DisplayMenu(List<string> menu)
         {
-            // this is the menu
+            // this will write a list of strings to the console
 
             foreach (string menuItem in menu)
             {
@@ -25,7 +25,7 @@ namespace KYChildSupportCalculator
 
         public static void Header()
         {
-            //Header using Console.WriteLine in a void method
+            //Header using Console.WriteLine in a static method
             Console.Clear();
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
             Console.WriteLine("++++$                                           $++++");
@@ -35,9 +35,9 @@ namespace KYChildSupportCalculator
             Console.WriteLine("\n");
         }
 
-        public static string WelcomeTextToMenu()
+        public string WelcomeTextToMenu()
         {
-            //welcome menu using strings using a method with a blank return
+            //welcome menu using a list of strings in a non-static method
             Header();
 
             string welcome = "WELCOME TO THE KENTUCKY CHILD SUPPORT CALCULATOR\n\n";
@@ -48,13 +48,12 @@ namespace KYChildSupportCalculator
             menu.Add(welcome);
             menu.Add(effectiveDate);
             menu.Add(disclaimer);
-            MenuClasses.DisplayMenu(menu);
+            UserPromptsClass.DisplayMenu(menu);
 
             return "";
         }
         public static string Instructions()
         {
-            //instructions using Console.WriteLine
             Header();
 
             Console.WriteLine("This calculator is extremely easy to use.\n");
@@ -63,22 +62,15 @@ namespace KYChildSupportCalculator
             Console.WriteLine("Second, you will enter income information.");
             Console.WriteLine("Third, you will enter expense information.");
             Console.WriteLine("Then the calculator will do its magic.\n\n");
-            Console.WriteLine("At any time you can write HELP for more information about how to answer a question.");
+            //Console.WriteLine("At any time you can write HELP for more information about how to answer a question.");
             Console.WriteLine("Press ENTER to begin.");
-
-            //MenuClasses.help = Console.ReadLine();
-            //if (help.ToUpper = "HELP")
-            //{
-            //    Console.WriteLine("Lets wait until you get to the first question before you start asking for help!");
-            //    Console.ReadLine();
-            //}
 
             return "";
         }
 
         public static void StepOneQuestions()
         {
-            MenuClasses.Header();
+            UserPromptsClass.Header();
             Console.WriteLine("STEP 1 - GENERAL INFORMATION\n\n");
 
             KYChildSupportCalculator.timeSpent.StartTimer();
@@ -155,11 +147,11 @@ namespace KYChildSupportCalculator
 
         public static void StepTwoQuestions()
         {
-            MenuClasses.StepTwoHeader();
+            UserPromptsClass.StepTwoHeader();
 
-            KYChildSupportCalculator.parentOne.MonthlyIncome = Validation.Prompt4Decimal($"What is your gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
+            KYChildSupportCalculator.parentOne.MonthlyIncome = Validation.Prompt4Decimal($"What is your gross monthly income?", "You did not enter a valid selection.  Please enter YOUR gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
 
-            KYChildSupportCalculator.parentTwo.MonthlyIncome = Validation.Prompt4Decimal($"What is {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income?", "You did not enter a valid selection.  Please enter your gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
+            KYChildSupportCalculator.parentTwo.MonthlyIncome = Validation.Prompt4Decimal($"What is {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income?", $"You did not enter a valid selection.  Please enter {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
         }
 
         public static void StepThreeHeader()
@@ -174,7 +166,7 @@ namespace KYChildSupportCalculator
 
         public static void StepThreeQuestions()
         {
-            MenuClasses.StepThreeHeader();
+            UserPromptsClass.StepThreeHeader();
 
             //Maintenance payments
 

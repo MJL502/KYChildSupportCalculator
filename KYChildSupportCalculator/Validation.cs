@@ -63,15 +63,6 @@ namespace KYChildSupportCalculator
             Console.Write("Selection: ");
             userSelection = Console.ReadLine();
 
-            //foreach (KeyValuePair<string, string> menuitem in menu)
-            //{
-            //    while (menuitem.Key.ToUpper() != userSelection.ToUpper())
-            //    {
-            //        Console.Write("That was not a valid selection.  Please enter a Selection: ");
-            //        userSelection = Console.ReadLine();
-            //    }
-            //}
-
             foreach (KeyValuePair<string, string> menuitem in menu)
             {
                 if (menuitem.Key.ToUpper() == userSelection.ToUpper())

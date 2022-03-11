@@ -333,8 +333,6 @@ namespace KYChildSupportCalculator
 
             int lookUpRow = KYChildSupportCalculator.results.IncomeForTable / 100;
             int lookUpColumn = KYChildSupportCalculator.generalInfo.ChildrenForTable;
-
-            //add validation;
             
             KYChildSupportCalculator.results.BaseSupport = int.Parse(fullTable[lookUpRow, lookUpColumn]);
         }

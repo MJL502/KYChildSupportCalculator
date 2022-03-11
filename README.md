@@ -24,7 +24,7 @@ This project had specific parameters that necessitated the first version being b
 
 
 Project Requirements
-•	Project is uploaded to your GitHub repository and shows at minimum 5 separate commits. - IN PROGRESS -
+•	Project is uploaded to your GitHub repository and shows at minimum 5 separate commits. - Complete
 
 •	Project includes a README file that explains the following:
 	o	A one paragraph or longer description of what your project is about
@@ -41,29 +41,30 @@ Project Requirements
 •	Choose at least 3 items on the Features List below and implement them in your project
 
 FEATURE LIST:
-•	Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
-	 COMPLETE (first feature)
+1	Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
+	 COMPLETE
+
+2	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application 	Complete - the child support table is read in frmo a csv file
+
+3	Create 3 or more unit tests for your application - Complete 
+
+4	Build a conversion tool that converts user input to another type and displays it (ex: converts cups to grams) - Complete - the program converts user inputs (i.e. monthly income and number of children) into a child support amount
+
+5	Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event) - Complete - I have a timer that starts when the user begins inputing data and finishes when the program is complete, and displays how long it took to run the program
+
+6	Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program - POSSIBLY COMPLETE? - I CREATE AN ARRAY (not a dictionary or list) and retreive a value from it
+
+
+Features which are not included but could be added:
 
 •	Create an additional class which inherits one or more properties from its parent
-	 - MAY BE ADDED - 
 
-•	Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program - MAY BE ADDED -
+•	Implement a log that records errors, invalid inputs, or other important events and writes them to a text file
 
-•	Implement a log that records errors, invalid inputs, or other important events and writes them to a text file - MAY BE ADDED - 
+•	Implement a regular expression (regex) to ensure a field either a phone number or an email address is always stored and displayed in the same format 
 
-•	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application Complete (second feature)
+•	Use a LINQ query to retrieve information from a data structure (such as a list or array) or file
 
-•	Implement a regular expression (regex) to ensure a field either a phone number or an email address is always stored and displayed in the same format
-	 - IN PROGRESS - 
+•	Analyze text and display information about it (ex: how many words in a paragraph)
 
-•	Use a LINQ query to retrieve information from a data structure (such as a list or array) or file - MAY BE ADDED -
-
-•	Create 3 or more unit tests for your application - Complete (third fature) 
-
-•	Build a conversion tool that converts user input to another type and displays it (ex: converts cups to grams) - Complete (fourth feature) 
-
-•	Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event) - Complete (fifth feature) 
-
-•	Analyze text and display information about it (ex: how many words in a paragraph) - IN PROGRESS
-
-•	Visualize data in a graph, chart, or other visual representation of data - MAY BE ADDED - 
+•	Visualize data in a graph, chart, or other visual representation of data

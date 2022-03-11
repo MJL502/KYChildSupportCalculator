@@ -15,17 +15,19 @@ namespace KYChildSupportCalculator
         public static GeneralInfo generalInfo = new GeneralInfo();
         public static Results results = new Results();
         public static TimeSpent timeSpent = new TimeSpent();
-
+        
+ 
         public static void Main()
         {
+            var userPrompt = new UserPromptsClass(); //creates an instance of a non-static method to be called below
 
             Console.Clear();
 
-            MenuClasses.WelcomeTextToMenu();
+            userPrompt.WelcomeTextToMenu(); //calling the non-static method
             Console.ReadLine();
             Console.Clear();
 
-            MenuClasses.Instructions();
+            UserPromptsClass.Instructions();
             Console.ReadLine();
             Console.Clear();
 
@@ -33,16 +35,16 @@ namespace KYChildSupportCalculator
             do
             {
                 //menus
-                MenuClasses.StepOneQuestions();
-                MenuClasses.StepTwoQuestions();
-                MenuClasses.StepThreeQuestions();
+                UserPromptsClass.StepOneQuestions();
+                UserPromptsClass.StepTwoQuestions();
+                UserPromptsClass.StepThreeQuestions();
 
                 //calculations below must be in this order
                 Parent.CalculateEachParentsContribution();
                 ChildSupportTable.ReadTableFromFile();
                 Parent.CalculateEachParentsSupportObligation();
                 Results.WorksheetSelector();
-                MenuClasses.FinalResults();
+                UserPromptsClass.FinalResults();
 
                 //MenuClasses.WorkSheet();
 
