@@ -42,7 +42,7 @@ namespace KYChildSupportCalculator
         public decimal IndividualSupportObligation { get; set; }
 
 
-        public static void ParentFirstCalculations()
+        public static void CalculateEachParentsContribution()
         {
             if (KYChildSupportCalculator.parentOne.AdjustedMonthlyGross <= 0 && KYChildSupportCalculator.parentTwo.AdjustedMonthlyGross > 0)
             {
@@ -77,7 +77,7 @@ namespace KYChildSupportCalculator
                 
         }
 
-        public static void ParentFinalCalculations()
+        public static void CalculateEachParentsSupportObligation()
         {
             
             if (KYChildSupportCalculator.generalInfo.EqualSchedule == true)
@@ -140,43 +140,45 @@ namespace KYChildSupportCalculator
 
         public bool EqualSchedule { get; set; }
         public int PrimaryResidence { get; set; }
-        public decimal CombinedIncome { get; set; }
+        public decimal CombinedIncome
+        {
+            get
+            {
+                return KYChildSupportCalculator.parentOne.AdjustedMonthlyGross + KYChildSupportCalculator.parentTwo.AdjustedMonthlyGross;
+            }
+        }
         public string PayorSwitch { get; set; }
         public string WhoIsPayor { get; set; }
-
-        public static void GeneralInfoCalculations()
-       {
-           KYChildSupportCalculator.generalInfo.CombinedIncome = KYChildSupportCalculator.parentOne.AdjustedMonthlyGross +
-              KYChildSupportCalculator.parentTwo.AdjustedMonthlyGross;
-       }
     }
 
     public class Results
     {
-        public int IncomeForTable { get; set; } 
+        public int IncomeForTable { get; set; }
+        public int MaxIncomeForTable { get; set; }
         public int BaseSupport { get; set; }
-        public decimal TotalChildCare { get; set; }
-        public decimal TotalHealthInsurance { get; set; }
+        public decimal TotalChildCare
+        {
+            get 
+            {
+                return KYChildSupportCalculator.parentOne.ChildCarePaid + KYChildSupportCalculator.parentTwo.ChildCarePaid;
+            }
+        }
+
+        public decimal TotalHealthInsurance
+        {
+            get 
+            {
+                return KYChildSupportCalculator.parentOne.HealthInsPaid + KYChildSupportCalculator.parentTwo.HealthInsPaid;
+            }
+        }
         public decimal TotalSupport 
         { get
             {
-                decimal totalSupport = BaseSupport + TotalChildCare + TotalHealthInsurance;
-                return totalSupport;
+                return BaseSupport + TotalChildCare + TotalHealthInsurance;
             }
         }
         public decimal FinalChildSupport { get; set; }
 
-        public static void ResultsCalculations()
-        {
-           
-            KYChildSupportCalculator.results.TotalChildCare =
-                KYChildSupportCalculator.parentOne.ChildCarePaid +
-                KYChildSupportCalculator.parentTwo.ChildCarePaid;
-
-            KYChildSupportCalculator.results.TotalHealthInsurance =
-                KYChildSupportCalculator.parentOne.HealthInsPaid +
-                KYChildSupportCalculator.parentTwo.HealthInsPaid;
-        }
         public static void WorksheetSelector()
         { 
             //if statement for switch
@@ -281,7 +283,11 @@ namespace KYChildSupportCalculator
     {
         public static void ReadTableFromFile()
         {
-            string path = @"C:\Users\mjlaw\source\repos\KYChildSupportCalculator\ChildSupportTable.csv";
+            string fileName = "ChildSupportTable.csv";
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\", fileName);
+            //string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\", fileName);
+            //string path = @"C:\Users\mjlaw\source\repos\KYChildSupportCalculator\ChildSupportTable.csv";
+
 
             //// This text is added only once to the file.
             //if (!File.Exists(path))
@@ -313,13 +319,12 @@ namespace KYChildSupportCalculator
                 }
             }
 
-
-            int maxIncomeOnTable = int.Parse(fullTable[(numRows - 1), 0]);
+            KYChildSupportCalculator.results.MaxIncomeForTable = int.Parse(fullTable[(numRows - 1), 0]); 
 
             if
-            (KYChildSupportCalculator.generalInfo.CombinedIncome > maxIncomeOnTable)
+            (KYChildSupportCalculator.generalInfo.CombinedIncome > KYChildSupportCalculator.results.MaxIncomeForTable)
             {
-                KYChildSupportCalculator.results.IncomeForTable = maxIncomeOnTable;
+                KYChildSupportCalculator.results.IncomeForTable = KYChildSupportCalculator.results.MaxIncomeForTable;
             }
             else
             {

@@ -238,6 +238,23 @@ namespace KYChildSupportCalculator
                     Console.WriteLine($"Based on the information entered {KYChildSupportCalculator.parentTwo.FirstName} should pay {KYChildSupportCalculator.parentOne.FirstName} {KYChildSupportCalculator.results.FinalChildSupport} per month.");
                     break;
             }
+
+            Console.WriteLine();
+
+            if (KYChildSupportCalculator.parentOne.MonthlyIncome <= 0 || KYChildSupportCalculator.parentTwo.MonthlyIncome <= 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("***When one parent has no income the Court may be able to impute income to that parent, give the other parent an offset for health insurance they pay, or both.  You should consult an attorney to discuss your options.");
+            }
+
+            if (KYChildSupportCalculator.generalInfo.CombinedIncome > KYChildSupportCalculator.results.MaxIncomeForTable)
+            {
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("***Since your combined monthly incomes exceeds the maximimum monthly income contemplated by the Kentucky Child Support table the Court could deviate from the calculated child support amount.  You should consult an attorney to discuss your options.");
+            }
+
             KYChildSupportCalculator.timeSpent.EndTimer();
             Console.WriteLine($"\nIt took {KYChildSupportCalculator.timeSpent.CreateTimeSpentString(KYChildSupportCalculator.timeSpent.StartDate, KYChildSupportCalculator.timeSpent.EndDate)} to calculate your child support.");
             Console.ReadLine();

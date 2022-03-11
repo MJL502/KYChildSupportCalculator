@@ -6,18 +6,104 @@ using System.Text;
 using System.Threading.Tasks;
 using KYChildSupportCalculator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
 
 namespace UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ParentClassTests
     {
         [TestMethod]
-        public void Child_Support_Table_Reading_From_File()
+
+        public void Parent_FullName_Is_Correct_Returns_True()
         {
+            //Arrange
+            var testParent = new Parent();
 
+            //Add
+            testParent.FirstName = "John";
+            testParent.LastName = "Doe";
 
-            /*tests below should all work - will be removed once unit tests are operational
+            //Assert
+            Assert.IsTrue(testParent.FullName == "John Doe");
+        }
+
+        [TestMethod]
+        public void Parent_AdjustedMonthlyIncome_Is_Correct_Returns_True()
+        {
+            //Arrange
+            var testParent = new Parent();
+
+            //Add
+            testParent.MonthlyIncome = 1000;
+            testParent.MaintPaid = 50;
+            testParent.CSPaid = 100;
+
+            //Assert
+            Assert.IsTrue(testParent.AdjustedMonthlyGross == 850);
+        }
+
+        /*
+        public void Parent_Contribution_Is_Correct_Returns_True()
+        {
+            //Arrange
+            var parentOne = new Parent();
+            var parentTwo = new Parent();
+            var mock = Substitute.For<Parent.CalculateEachParentsContribution>();
+            //using NSubstitute NuGet package
+            
+            //Add
+            mock.parentOne.AdjustedMonthlyGross = 1000;
+            mock.parentTwo.AdjustedMonthlyGross = 3000;
+
+            //Assert
+            Assert.IsTrue(parentOne.Contribution == .25m && parentTwo.Contribution == .75m);
+        }
+        */
+    }
+
+    [TestClass]
+    public class GeneralInfoTests
+    {
+        [TestMethod]
+        public void CombinedIncome_Is_Correct_Returns_True()
+        {
+            //Arrange
+
+            //Add
+
+            //Assert
+            
+        }
+    }
+    [TestClass]
+
+    public class ResultsTests
+    {
+        [TestMethod]
+        public void CSV_File_Path_Is_Correct_Returns_True()
+        {
+            //Arrange
+            string fileName = "ChildSupportTable.csv";
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\", fileName);
+
+            //Add
+
+            //Assert
+            Assert.IsTrue(File.Exists(path));
+
+        }
+
+        /*
+        public void Child_Support_Table_Reading_From_File_Returns_True()
+        {
+            //Arrange
+
+            //Add
+
+            //Assert
+
+            //tests below should all work - will be removed once unit tests are operational
 
 
             Console.WriteLine($"p1 full name is --{KYChildSupportCalculator.parentOne.fullName}--");
@@ -56,8 +142,7 @@ namespace UnitTests
             Console.WriteLine($"final support amount --{KYChildSupportCalculator.results.finalChildSupport}--");
             Console.ReadLine();
 
-            */
-
         }
+        */
     }
 }

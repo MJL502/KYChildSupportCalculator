@@ -29,7 +29,7 @@ namespace KYChildSupportCalculator
 
             Console.WriteLine(prompt1);
 
-            while (!int.TryParse(Console.ReadLine(), out value) || value > maxValue)
+            while (!int.TryParse(Console.ReadLine(), out value) || value > maxValue || value < 1)
             {
                 Console.Write(prompt2);
             }

@@ -27,9 +27,10 @@ Project Requirements
 •	Project is uploaded to your GitHub repository and shows at minimum 5 separate commits. - IN PROGRESS -
 
 •	Project includes a README file that explains the following:
-	o	A one paragraph or longer description of what your project is about - COMPLETE - SEE ABOVE
-	o	Which 3+ features you have included from the below list to meet the requirements - COMPLETE - SEE BELOW
-	o	Any special instructions required for the reviewer to run your project. - COMPLETE - SEE ABOVE
+	o	A one paragraph or longer description of what your project is about
+	o	Which 3+ features you have included from the below list to meet the requirements
+	o	Any special instructions required for the reviewer to run your project.
+	COMPLETE
 
 •	You must create at least one class, then create at least one object of that class and populate it with data. 
 	You must use or display the data in your application. - COMPLETE - One example is the Parent class which has objects ParentOne and ParentTwo, both populated with data.
@@ -41,7 +42,7 @@ Project Requirements
 
 FEATURE LIST:
 •	Implement a “master loop” console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
-	 - IN PROGRESS - 
+	 COMPLETE (first feature)
 
 •	Create an additional class which inherits one or more properties from its parent
 	 - MAY BE ADDED - 
@@ -50,19 +51,19 @@ FEATURE LIST:
 
 •	Implement a log that records errors, invalid inputs, or other important events and writes them to a text file - MAY BE ADDED - 
 
-•	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application - COMPLETE -
+•	Read data from an external file, such as text, JSON, CSV, etc and use that data in your application Complete (second feature)
 
 •	Implement a regular expression (regex) to ensure a field either a phone number or an email address is always stored and displayed in the same format
 	 - IN PROGRESS - 
 
 •	Use a LINQ query to retrieve information from a data structure (such as a list or array) or file - MAY BE ADDED -
 
-•	Create 3 or more unit tests for your application - IN PROGRESS - 
+•	Create 3 or more unit tests for your application - Complete (third fature) 
 
-•	Build a conversion tool that converts user input to another type and displays it (ex: converts cups to grams) - IN PROGRESS - 
+•	Build a conversion tool that converts user input to another type and displays it (ex: converts cups to grams) - Complete (fourth feature) 
 
-•	Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event) - WILL BE ADDED - 
+•	Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event) - Complete (fifth feature) 
 
-•	Analyze text and display information about it (ex: how many words in a paragraph) - COMPLETE - SEE __________
+•	Analyze text and display information about it (ex: how many words in a paragraph) - IN PROGRESS
 
 •	Visualize data in a graph, chart, or other visual representation of data - MAY BE ADDED - 
