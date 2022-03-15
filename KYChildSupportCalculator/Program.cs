@@ -22,12 +22,12 @@ namespace KYChildSupportCalculator
             var userPrompt = new UserPromptsClass(); //creates an instance of a non-static method to be called below
 
             Console.Clear();
-
+           
             userPrompt.WelcomeTextToMenu(); //calling the non-static method
             Console.ReadLine();
             Console.Clear();
 
-            UserPromptsClass.Instructions();
+            userPrompt.Instructions();
             Console.ReadLine();
             Console.Clear();
 
@@ -35,16 +35,16 @@ namespace KYChildSupportCalculator
             do
             {
                 //menus
-                UserPromptsClass.StepOneQuestions();
-                UserPromptsClass.StepTwoQuestions();
-                UserPromptsClass.StepThreeQuestions();
+                userPrompt.StepOneQuestions();
+                userPrompt.StepTwoQuestions();
+                userPrompt.StepThreeQuestions();
 
                 //calculations below must be in this order
                 Parent.CalculateEachParentsContribution();
                 ChildSupportTable.ReadTableFromFile();
                 Parent.CalculateEachParentsSupportObligation();
                 Results.WorksheetSelector();
-                UserPromptsClass.FinalResults();
+                userPrompt.FinalResults();
 
                 //MenuClasses.WorkSheet();
 

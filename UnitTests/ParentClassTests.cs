@@ -43,23 +43,22 @@ namespace UnitTests
             Assert.IsTrue(testParent.AdjustedMonthlyGross == 850);
         }
 
-        /*
+        [TestMethod]
         public void Parent_Contribution_Is_Correct_Returns_True()
         {
             //Arrange
-            var parentOne = new Parent();
-            var parentTwo = new Parent();
-            var mock = Substitute.For<Parent.CalculateEachParentsContribution>();
+            Parent parentOne = new Parent();
+            Parent parentTwo = new Parent();
+
             //using NSubstitute NuGet package
-            
+
             //Add
-            mock.parentOne.AdjustedMonthlyGross = 1000;
-            mock.parentTwo.AdjustedMonthlyGross = 3000;
+            parentOne.MonthlyIncome = 7500;
+            parentTwo.MonthlyIncome = 2500;
 
             //Assert
-            Assert.IsTrue(parentOne.Contribution == .25m && parentTwo.Contribution == .75m);
+            Assert.IsTrue(parentOne.Contribution == .75m && parentTwo.Contribution == .25m);
         }
-        */
     }
 
     [TestClass]
@@ -85,8 +84,8 @@ namespace UnitTests
         {
             //Arrange
             string fileName = "ChildSupportTable.csv";
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\", fileName);
-
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\KYChildSupportCalculator\bin\Debug\net6.0\TableData", fileName);
+        
             //Add
 
             //Assert

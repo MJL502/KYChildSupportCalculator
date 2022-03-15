@@ -284,7 +284,7 @@ namespace KYChildSupportCalculator
         public static void ReadTableFromFile()
         {
             string fileName = "ChildSupportTable.csv";
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\..\", fileName);
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"TableData\", fileName);
             //string path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\", fileName);
             //string path = @"C:\Users\mjlaw\source\repos\KYChildSupportCalculator\ChildSupportTable.csv";
 

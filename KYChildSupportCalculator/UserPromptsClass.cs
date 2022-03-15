@@ -23,7 +23,7 @@ namespace KYChildSupportCalculator
             return "";
         }
 
-        public static void Header()
+        public void Header()
         {
             //Header using Console.WriteLine in a static method
             Console.Clear();
@@ -52,7 +52,7 @@ namespace KYChildSupportCalculator
 
             return "";
         }
-        public static string Instructions()
+        public string Instructions()
         {
             Header();
 
@@ -68,9 +68,9 @@ namespace KYChildSupportCalculator
             return "";
         }
 
-        public static void StepOneQuestions()
+        public void StepOneQuestions()
         {
-            UserPromptsClass.Header();
+            Header();
             Console.WriteLine("STEP 1 - GENERAL INFORMATION\n\n");
 
             KYChildSupportCalculator.timeSpent.StartTimer();
@@ -115,7 +115,7 @@ namespace KYChildSupportCalculator
                 }
             }  
         }
-        public static void StepTwoHeader()
+        public void StepTwoHeader()
         {
             Header();
             Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName}");
@@ -125,7 +125,7 @@ namespace KYChildSupportCalculator
             Console.WriteLine("STEP 2 - INCOME INFORMATION\n\n");
         }
 
-        public static void ScheduleHeader()
+        public void ScheduleHeader()
         {
             if (KYChildSupportCalculator.generalInfo.EqualSchedule == true)
             {
@@ -145,16 +145,16 @@ namespace KYChildSupportCalculator
             }
         }
 
-        public static void StepTwoQuestions()
+        public void StepTwoQuestions()
         {
-            UserPromptsClass.StepTwoHeader();
+            StepTwoHeader();
 
             KYChildSupportCalculator.parentOne.MonthlyIncome = Validation.Prompt4Decimal($"What is your gross monthly income?", "You did not enter a valid selection.  Please enter YOUR gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
 
             KYChildSupportCalculator.parentTwo.MonthlyIncome = Validation.Prompt4Decimal($"What is {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income?", $"You did not enter a valid selection.  Please enter {KYChildSupportCalculator.parentTwo.FirstName}'s gross monthly income as a number.  Do not use any dollar signs or commas.  Just enter a number.");
         }
 
-        public static void StepThreeHeader()
+        public void StepThreeHeader()
         {
             Header();
             Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName} makes {KYChildSupportCalculator.parentOne.MonthlyIncome} per month.");
@@ -164,9 +164,9 @@ namespace KYChildSupportCalculator
             Console.WriteLine("STEP 3 - EXPENSE INFORMATION\n\n");
         }
 
-        public static void StepThreeQuestions()
+        public void StepThreeQuestions()
         {
-            UserPromptsClass.StepThreeHeader();
+            StepThreeHeader();
 
             //Maintenance payments
 
@@ -200,7 +200,7 @@ namespace KYChildSupportCalculator
             KYChildSupportCalculator.parentTwo.HealthInsPaid = Validation.Prompt4Decimal($"If {KYChildSupportCalculator.parentTwo.FirstName} pays for health insurance for your child(ren), enter the monthly amount.  If {KYChildSupportCalculator.parentTwo.FirstName} does not pay for child care enter 0.", errorMessage);
         }
 
-        public static void FinalHeader()
+        public void FinalHeader()
         {
             Header();
             Console.WriteLine($"Parent One: {KYChildSupportCalculator.parentOne.FullName} makes {KYChildSupportCalculator.parentOne.MonthlyIncome} per month and the adjusted grosss income is {KYChildSupportCalculator.parentOne.AdjustedMonthlyGross}.");
@@ -209,7 +209,7 @@ namespace KYChildSupportCalculator
             ScheduleHeader();
         }
 
-        public static void FinalResults()
+        public void FinalResults()
         {
             FinalHeader();
             //display final child support results using a switch
@@ -296,7 +296,7 @@ namespace KYChildSupportCalculator
             Console.WriteLine($"|____________________|____________________|____________________|_______________|");
        }*/
 
-        public static void exitSurvey()
+        public void exitSurvey()
         {
             //save code
         }
