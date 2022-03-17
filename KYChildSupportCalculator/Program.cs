@@ -1,33 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KYChildSupportCalculator;
-
-namespace KYChildSupportCalculator
+﻿namespace KYChildSupportCalculator
 {
     public class KYChildSupportCalculator
     {
-        public static Parent parentOne = new Parent();
-        public static Parent parentTwo = new Parent();
-        public static GeneralInfo generalInfo = new GeneralInfo();
-        public static Results results = new Results();
         public static TimeSpent timeSpent = new TimeSpent();
         
- 
         public static void Main()
         {
-            var userPrompt = new UserPromptsClass(); //creates an instance of a non-static method to be called below
-
+            UserPrompts userPrompts = new UserPrompts();
+            
             Console.Clear();
-           
-            userPrompt.WelcomeTextToMenu(); //calling the non-static method
+
+            userPrompts.WelcomeTextToMenu(); //calling the non-static method
             Console.ReadLine();
             Console.Clear();
 
-            userPrompt.Instructions();
+            userPrompts.Instructions();
             Console.ReadLine();
             Console.Clear();
 
@@ -35,16 +22,16 @@ namespace KYChildSupportCalculator
             do
             {
                 //menus
-                userPrompt.StepOneQuestions();
-                userPrompt.StepTwoQuestions();
-                userPrompt.StepThreeQuestions();
+                userPrompts.StepOneQuestions();
+                userPrompts.StepTwoQuestions();
+                userPrompts.StepThreeQuestions();
 
                 //calculations below must be in this order
-                Parent.CalculateEachParentsContribution();
-                ChildSupportTable.ReadTableFromFile();
-                Parent.CalculateEachParentsSupportObligation();
-                Results.WorksheetSelector();
-                userPrompt.FinalResults();
+                userPrompts.childSupportTable.results.generalInfo.CalculateEachParentsContribution();
+                userPrompts.childSupportTable.ReadTableFromFile();
+                userPrompts.childSupportTable.results.CalculateEachParentsSupportObligation();
+                userPrompts.childSupportTable.results.WorksheetSelector();
+                userPrompts.FinalResults();
 
                 //MenuClasses.WorkSheet();
 
