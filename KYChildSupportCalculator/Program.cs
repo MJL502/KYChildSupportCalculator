@@ -10,7 +10,7 @@
             
             Console.Clear();
 
-            userPrompts.WelcomeTextToMenu(); //calling the non-static method
+            userPrompts.WelcomeTextToMenu();
             Console.ReadLine();
             Console.Clear();
 
@@ -32,8 +32,6 @@
                 userPrompts.childSupportTable.results.CalculateEachParentsSupportObligation();
                 userPrompts.childSupportTable.results.WorksheetSelector();
                 userPrompts.FinalResults();
-
-                //MenuClasses.WorkSheet();
 
                 exit = !Validation.Prompt4YesNo("Would you like to run another child support calculation, enter 'Y' for yes OR 'N' for no?\n");
             }

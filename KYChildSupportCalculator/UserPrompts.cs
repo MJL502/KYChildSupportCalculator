@@ -243,11 +243,6 @@
             Console.ReadLine();
         }
 
-        public void exitSurvey()
-        {
-            //save code
-        }
-
     }
 
 }
