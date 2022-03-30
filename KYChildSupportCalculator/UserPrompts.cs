@@ -148,8 +148,8 @@
         public void StepThreeHeader()
         {
             Header();
-            Console.WriteLine($"Parent One: {childSupportTable.results.generalInfo.parentOne.FullName} makes {childSupportTable.results.generalInfo.parentOne.MonthlyIncome} per month.");
-            Console.WriteLine($"Parent Two: {childSupportTable.results.generalInfo.parentTwo.FullName} makes {childSupportTable.results.generalInfo.parentTwo.MonthlyIncome} per month.");
+            Console.WriteLine($"Parent One: {childSupportTable.results.generalInfo.parentOne.FullName} makes {childSupportTable.results.generalInfo.parentOne.MonthlyIncome:C} per month.");
+            Console.WriteLine($"Parent Two: {childSupportTable.results.generalInfo.parentTwo.FullName} makes {childSupportTable.results.generalInfo.parentTwo.MonthlyIncome:C} per month.");
             Console.WriteLine($"Child(ren): {childSupportTable.results.generalInfo.NumberOfChildren}");
             ScheduleHeader();
             Console.WriteLine("STEP 3 - EXPENSE INFORMATION\n\n");
@@ -194,8 +194,8 @@
         public void FinalHeader()
         {
             Header();
-            Console.WriteLine($"Parent One: {childSupportTable.results.generalInfo.parentOne.FullName} makes {childSupportTable.results.generalInfo.parentOne.MonthlyIncome} per month and the adjusted grosss income is {childSupportTable.results.generalInfo.parentOne.AdjustedMonthlyGross}.");
-            Console.WriteLine($"Parent Two: {childSupportTable.results.generalInfo.parentTwo.FullName} makes {childSupportTable.results.generalInfo.parentTwo.MonthlyIncome} per month and the adjusted grosss income is {childSupportTable.results.generalInfo.parentTwo.AdjustedMonthlyGross}.");
+            Console.WriteLine($"Parent One: {childSupportTable.results.generalInfo.parentOne.FullName} makes {childSupportTable.results.generalInfo.parentOne.MonthlyIncome:C} per month and the adjusted grosss income is {childSupportTable.results.generalInfo.parentOne.AdjustedMonthlyGross:C}.");
+            Console.WriteLine($"Parent Two: {childSupportTable.results.generalInfo.parentTwo.FullName} makes {childSupportTable.results.generalInfo.parentTwo.MonthlyIncome:C} per month and the adjusted grosss income is {childSupportTable.results.generalInfo.parentTwo.AdjustedMonthlyGross:C}.");
             Console.WriteLine($"Child(ren): {childSupportTable.results.generalInfo.NumberOfChildren}");
             ScheduleHeader();
         }
@@ -214,11 +214,11 @@
 
                 case "parent1":
 
-                    Console.WriteLine($"Based on the information entered {childSupportTable.results.generalInfo.parentOne.FirstName} should pay {childSupportTable.results.generalInfo.parentTwo.FirstName} {childSupportTable.results.FinalChildSupport} per month.");
+                    Console.WriteLine($"Based on the information entered {childSupportTable.results.generalInfo.parentOne.FirstName} should pay {childSupportTable.results.generalInfo.parentTwo.FirstName} {childSupportTable.results.FinalChildSupport:C} per month.");
                     break;
 
                 case "parent2":
-                    Console.WriteLine($"Based on the information entered {childSupportTable.results.generalInfo.parentTwo.FirstName} should pay {childSupportTable.results.generalInfo.parentOne.FirstName} {childSupportTable.results.FinalChildSupport} per month.");
+                    Console.WriteLine($"Based on the information entered {childSupportTable.results.generalInfo.parentTwo.FirstName} should pay {childSupportTable.results.generalInfo.parentOne.FirstName} {childSupportTable.results.FinalChildSupport:C} per month.");
                     break;
             }
 

@@ -15,7 +15,6 @@ Down the left column it has totalMonthlyIncome in $100 increments, from $0 to $3
 The program will round the parents totalMonthlyIncome to the correct $100 increment and then use that amount and the number of children to lookup the baseChildSupport.  
 The child support table that is used in the calculation is read in from an external .csv file.
 This allows the file to be easily replaced with an updated version if/when the state updates the child support table.
-To ensure this calculator runs correctly make sure the .csv file is in the main project directory.
 
 This project is run from a .NET console application, written in c#.
 Ideally there would be a more user friendly interface and likely something cross platform.
@@ -55,7 +54,7 @@ FEATURE LIST:
 6	Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program - POSSIBLY COMPLETE? - I CREATE AN ARRAY (not a dictionary or list) and retreive a value from it
 
 
-Features which are not included but could be added:
+Features which are not included but could be added in the future:
 
 •	Create an additional class which inherits one or more properties from its parent
 
